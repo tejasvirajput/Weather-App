@@ -44,6 +44,8 @@ export default function SearchBox({ updateInfo }) {
       setCity("");
       let newInfo = await getWeatherInfo();
       updateInfo(newInfo);
+      setError(false); // reset error if valid city
+      // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setError(true);
     }
