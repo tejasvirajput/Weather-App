@@ -100,6 +100,14 @@ export default function WeatherApp() {
               </p>
             </div>
           )}
+
+          <footer className="mt-6 border-t border-white/30 pt-4 text-center">
+            <p className="text-xs font-medium text-slate-800 sm:text-sm">
+              © 2026 Tejasvi Rajput
+              <span className="mx-2 text-slate-800">·</span>
+              Made with <span className="text-red-500">❤️</span>
+            </p>
+          </footer>
         </div>
       </div>
     </main>

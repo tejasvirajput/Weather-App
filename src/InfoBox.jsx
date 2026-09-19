@@ -139,7 +139,7 @@ export default function InfoBox({ info }) {
           {/* Main Weather Information */}
           <div className="relative flex flex-col justify-center p-5 sm:p-6">
             {/* Temperature Unit */}
-            <div className="absolute right-6 top-6">
+            <div className="mb-4 flex justify-center md:absolute md:right-6 md:top-6 md:mb-0">
               <div className="inline-flex rounded-full border border-slate-200 bg-slate-100 p-1 shadow-sm">
                 <button
                   type="button"

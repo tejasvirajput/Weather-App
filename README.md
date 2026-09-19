@@ -1,160 +1,127 @@
 # 🌤️ Weather App
 
-A modern, responsive weather application built with React that provides real-time weather information for cities around the world. The app features a clean Material-UI design with dynamic background images based on weather conditions.
-
-## ✨ Features
-
-- **Real-time Weather Data**: Get current weather information for any city worldwide
-- **Dynamic Background Images**: Background changes based on weather conditions (hot, cold, rainy, cloudy, foggy)
-- **Weather Icons**: Visual weather indicators using Material-UI icons
-- **Comprehensive Weather Info**:
-  - Current temperature
-  - Minimum and maximum temperature
-  - Humidity levels
-  - "Feels like" temperature
-  - Weather description
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
-- **Error Handling**: User-friendly error messages for invalid city names
-- **Modern UI**: Built with Material-UI components for a polished look
+A responsive React weather dashboard that lets users search for cities, use their current location, and view live weather details with a polished glassmorphism-style UI.
 
 ## 🚀 Live Demo
 
-[https://weather-app-jbvl.onrender.com]
+https://weather-app-jbvl.onrender.com
 
-## 🛠️ Technologies Used
+## ✨ Features
 
-- **React 19.1.0** - Frontend framework
-- **Vite** - Build tool and development server
-- **Material-UI (MUI)** - UI component library
-  - @mui/material
-  - @mui/icons-material
-  - @emotion/react
-  - @emotion/styled
-- **OpenWeatherMap API** - Weather data provider
-- **CSS3** - Custom styling
-- **ESLint** - Code linting
+- Search for any city using OpenWeatherMap geocoding data
+- Use the browser's geolocation to fetch the weather for your current area
+- Display real-time weather details such as:
+  - current temperature
+  - feels-like temperature
+  - humidity
+  - pressure
+  - visibility
+  - wind speed and direction
+  - local date and time for the selected city
+- Toggle between Celsius and Fahrenheit
+- Dynamic weather background images based on the current condition
+- Auto-suggest city results while typing
+- Friendly error states for invalid searches or blocked geolocation access
+- Fully responsive layout for desktop and mobile screens
 
-## 📦 Installation
+## 🧩 Tech Stack
 
-1. **Clone the repository**
+- React 19
+- Vite
+- JavaScript
+- OpenWeatherMap API
+- Material UI Icons
+- Tailwind CSS utility classes
+- ESLint
 
-   ```bash
-   git clone https://github.com/yourusername/weather-app-react.git
-   cd weather-app-react
-   ```
+## 🚀 Getting Started
 
-2. **Install dependencies**
+### 1. Install dependencies
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. **Set up API Key**
+### 2. Add your OpenWeatherMap API key
 
-   - Get a free API key from [OpenWeatherMap](https://openweathermap.org/api)
-   - Replace the API key in `src/SearchBox.jsx`:
+Create a `.env` file in the project root and add:
 
-   ```javascript
-   const API_KEY = "your_api_key_here";
-   ```
+```bash
+VITE_WEATHER_API_KEY=your_api_key_here
+```
 
-4. **Start the development server**
+You can get a free API key from: https://openweathermap.org/api
 
-   ```bash
-   npm run dev
-   ```
+### 3. Start the app
 
-5. **Open your browser**
-   Navigate to `http://localhost:5173` to view the application
+```bash
+npm run dev
+```
 
-## 🎯 Usage
+Then open the local URL shown in the terminal, usually:
 
-1. **Search for a City**: Enter any city name in the search box
-2. **Get Weather Info**: Click the "Search" button or press Enter
-3. **View Results**: The app will display:
-   - City name with weather icon
-   - Current temperature
-   - Humidity percentage
-   - Minimum and maximum temperatures
-   - "Feels like" temperature
-   - Weather description
-   - Dynamic background image based on conditions
+```bash
+http://localhost:5173
+```
 
 ## 📁 Project Structure
 
-```
+```bash
 src/
-├── App.jsx              # Main app component
-├── WeatherApp.jsx       # Weather app container
-├── SearchBox.jsx        # Search functionality and API calls
-├── InfoBox.jsx          # Weather information display
-├── App.css              # Main app styles
-├── SearchBox.css        # Search box styles
-├── InfoBox.css          # Info box styles
-└── main.jsx             # App entry point
+├── App.jsx               # App entry point
+├── WeatherApp.jsx        # Main weather dashboard layout
+├── SearchBox.jsx         # City search, suggestions, geolocation logic
+├── InfoBox.jsx           # Weather card UI and data display
+├── weatherBackgrounds.jsx# Weather-related background image URLs
+├── App.css               # App styling
+├── index.css             # Global styles
+├── main.jsx              # React root bootstrap
+└── assets/               # Static assets if added later
 ```
 
 ## 🔧 Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint
-- `npm run preview` - Preview production build
+```bash
+npm run dev     # start the development server
+npm run build   # create a production build
+npm run preview # preview the production build locally
+npm run lint    # run ESLint checks
+```
 
-## 🌍 API Integration
+## 🌍 API Usage
 
-The app uses the OpenWeatherMap API to fetch weather data:
+The project uses OpenWeatherMap endpoints for both location search and weather details:
 
-- **Endpoint**: `https://api.openweathermap.org/data/2.5/weather`
-- **Parameters**: City name, API key, and metric units
-- **Response**: JSON with temperature, humidity, weather description, etc.
+- Geocoding lookup: `https://api.openweathermap.org/geo/1.0/direct`
+- Reverse geocoding: `https://api.openweathermap.org/geo/1.0/reverse`
+- Weather data: `https://api.openweathermap.org/data/2.5/weather`
 
-## 🎨 Design Features
+The app requests data in metric units and converts the result for display in Celsius or Fahrenheit.
 
-- **Dynamic Backgrounds**: Background images change based on:
+## 🎨 UI Highlights
 
-  - Hot weather (>15°C)
-  - Cold weather (<15°C)
-  - Cloudy conditions (80-90% humidity)
-  - Rainy conditions (>90% humidity)
-  - Foggy conditions (default)
+- Glassmorphism panels and blurred overlays
+- Dynamic backgrounds that change with weather conditions such as clear, cloud, rain, snow, and fog
+- Temperature unit switcher for °C and °F
+- City suggestion dropdown while typing
+- Weather condition-specific icons and color accents
 
-- **Weather Icons**: Material-UI icons that represent:
-  - ☀️ Sunny (hot weather)
-  - ❄️ Snowflake (cold weather)
-  - ⚡ Thunderstorm (cloudy)
-  - 💧 Water drop (rainy)
-  - 🌫️ Fog (foggy)
+## 🧠 How It Works
+
+1. The user enters a city name or clicks “Use My Location”.
+2. The app fetches matching locations from the OpenWeatherMap geocoding API.
+3. The selected city is used to fetch live weather data.
+4. The returned data is mapped into a display-friendly structure and rendered in the weather card.
+5. The background and icon styling adapt to the current weather condition.
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Feel free to fork this project, make improvements, and submit a pull request.
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is currently set up for personal learning and local development. No formal license file is included in the repository yet.
 
 ## 👨‍💻 Author
 
-**Tejasvi Rajput**
-
-- GitHub: [@tejasvirajput](https://github.com/tejasvirajput)
-
-## 🙏 Acknowledgments
-
-- [OpenWeatherMap](https://openweathermap.org/) for providing weather data
-- [Material-UI](https://mui.com/) for the beautiful UI components
-- [Unsplash](https://unsplash.com/) for the background images
-- [Vite](https://vitejs.dev/) for the fast build tool
-
-## 📞 Support
-
-If you have any questions or need help, please open an issue on GitHub or contact me directly.
-
----
-
-⭐ **Star this repository if you found it helpful!**
+Tejasvi Rajput
